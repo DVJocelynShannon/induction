@@ -29,7 +29,7 @@ for i in data['results']:
     with open(filename, "w") as outfile:
         json.dump(i, outfile)
 
-
+print('change')
 print(len(passed), 'tests passed and', len(failed), 'failed, so there were', len(passed) + len(failed), 'tests in total!')
 
 
