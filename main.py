@@ -14,20 +14,19 @@ num = 0
 
 
 #output individual json files for each test
-for i in data['results']:
+for i, r in enumerate(data['results'], start = 1):
     #prints/log outupt for successful tests
-    test_i = json.dumps(i, indent=len(i))
-    if i['status'] == 'pass':
-        print(num, '=', test_i)
+    test_r = json.dumps(r, indent=len(r))
+    if r['status'] == 'pass':
+        print(i, '=', test_r)
         passed.append(1)
     #if a fail adds one to keep count
     else:
         failed.append(1)
-    num = num + 1
     #create json file for all individual outputs
-    filename = "test" + str(num) + ".json"
+    filename = f"./output_jsonfiles/test{i}.json"
     with open(filename, "w") as outfile:
-        json.dump(i, outfile)
+        json.dump(r, outfile)
 
 print('change')
 print(len(passed), 'tests passed and', len(failed), 'failed, so there were', len(passed) + len(failed), 'tests in total!')
